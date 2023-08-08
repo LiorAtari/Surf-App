@@ -1,4 +1,4 @@
-# CI steps for manual Surf application
+# Steps to manually install the Surf-Booking app
 
 To begin, clone this repository by running:
 ```
