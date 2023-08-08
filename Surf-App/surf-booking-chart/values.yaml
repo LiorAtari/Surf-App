@@ -1,0 +1,14 @@
+image:
+  repository: lioratari/surf-booking
+  tag: "{{ .Chart.Version }}"
+service:
+  type: LoadBalancer
+  port: 80
+  nodePort: null
+postgresql:
+  enabled: false
+  host: "34.77.59.115"
+  port: "5432"
+  database: postgres
+  username: postgres
+  password: secretpassword

@@ -1,0 +1,84 @@
+   
+<!DOCTYPE html>
+<html lang="en">
+    <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1000&display=swap" rel="stylesheet">
+
+<head>
+
+    <title>Surf Trip Website</title> 
+     <link rel="stylesheet" href="static/styles/style.css"> 
+
+</head>
+<body>
+    <div class="headline"> SURF</div>
+
+    <div class="parahead" id="destinations">RECOMMENDED SURF TRIPS</div>
+    
+    <div class="para1"><strong>for BEGINNERS</strong></div>
+    <div class="trip-card-container">
+        {% for level in beginners_level %}
+            <div class="trip-card" >
+                <div class="background-image" style="background-image: url('{{ level.imglink }}');"></div>
+                <h2>{{ level.location }} TRIP</h2>
+                <p>for {{ level.level }} surfers</p>
+                <p>{{ level.surf_spot }} surf spot</p>
+                <p>{{ level.date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+     
+    <div class="para1"><strong>for INTERMEDIATES</strong></div>
+    <div class="trip-card-container">
+        {% for level in intermediates_level %}
+            <div class="trip-card" >
+                <div class="background-image" style="background-image: url('{{ level.imglink }}');"></div>
+                <h2>{{ level.location }} TRIP</h2>
+                <p>for {{ level.level }} surfers</p>
+                <p>{{ level.surf_spot }} surf spot</p>
+                <p>{{ level.date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    
+
+    <div class="para1"><strong>for ADVANCED</strong></div>
+    <div class="trip-card-container">
+        {% for level in advanced_level %}
+            <div class="trip-card" >
+                <div class="background-image" style="background-image: url('{{ level.imglink }}');"></div>
+                <h2>{{ level.location }} TRIP</h2>
+                <p>for {{ level.level }} surfers</p>
+                <p>{{ level.surf_spot }} surf spot</p>
+                <p>{{ level.date }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="para1"><strong>for EVERYONE</strong></div>
+    <div class="trip-card-container">
+        {% for level in all_levels %}
+            <div class="trip-card" >
+                <div class="background-image" style="background-image: url('{{ level.imglink }}');"></div>
+                <h2>{{ level.location }} TRIP</h2>
+                <p>for {{ level.level }} surfers</p>
+                <p>{{ level.surf_spot }} surf spot</p>
+                <p>{{ level.date }}</p>
+            </div>
+        {% endfor %}
+        
+    </div>
+       
+</body>
+</html>
+
+
+    

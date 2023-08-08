@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surf-booking
+  labels:
+    app: surf-booking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: surf-booking
+  template:
+    metadata:
+      labels:
+        app: surf-booking
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "lioratari/surf-booking:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_HOST
+              value: {{ .Values.postgresql.host }}
+            - name: DB_PORT
+              value: "{{ .Values.postgresql.port }}"
+            - name: DB_NAME
+              value: {{ .Values.postgresql.database }}
+            - name: DB_USERNAME
+              value: {{ .Values.postgresql.username }}
+            - name: DB_PASSWORD
+              value: {{ .Values.postgresql.password }}
