@@ -2,7 +2,7 @@
 
 To begin, clone this repository by running:
 ```
-git clone https://gitlab.com/sela-1090/collaboration/applications/surf-booking/application.git
+git clone https://github.com/LiorAtari/Surf-App.git
 ```
 
 build the docker file using the following command:
