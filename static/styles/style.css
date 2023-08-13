@@ -1,4 +1,4 @@
-    /* Add your CSS styles here */
+/* Add your CSS styles here */
 body {
     font-family: Arial, sans-serif;
     background-image: url(https://i.pinimg.com/originals/13/e5/60/13e56031f80605d7c72940fef9e91543.jpg);
@@ -16,7 +16,7 @@ body {
     padding-top: 30px;
 }
 
-.buttons {
+.get-answer-buttons {
     position: absolute;
     top: 80px;
     right: 20px;
@@ -24,7 +24,7 @@ body {
     gap: 10px;
 }
 
-.button {
+.get-answer-button {
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
@@ -33,6 +33,20 @@ body {
     font-family: 'Advent Pro', sans-serif;
     font-size: 16px;
     cursor: pointer;
+    display: none;
+}
+
+.website-button{
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    
+    margin-left: 30px;
 }
 
 .line {
@@ -60,6 +74,17 @@ body {
     text-align: center;
     font-weight: lighter;
     margin-top: 40px;
+}
+
+.para2 {
+    margin-left: 20%;
+    margin-right: 20%;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    font-weight: lighter;
+    margin-top: 40px;
+    
 }
 
 .trip-card-container {
@@ -110,17 +135,20 @@ body {
     font-weight: bold;
 }
 
-.trip-card:hover {
-    transform: rotateY(180deg);
-}
 
-.flip-card-inner {
+.flipper {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
     transform-style: preserve-3d;
+    transition: transform 0.5s;
 }
+
+.trip-card:hover .flipper {
+    transform: rotateY(180deg);
+}
+
 
 .flip-card-front, .flip-card-back {
     position: absolute;
@@ -133,12 +161,21 @@ body {
     z-index: 2;
 }
 
+
+
 .flip-card-back {
     transform: rotateY(180deg);
-    background-color: #333;
-    color: white;
+    /* background-color: white; Set the back image background color to black */
+    color: white; /* Set the text color for the trailer link */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* Apply a backface visibility for improved performance */
+    backface-visibility: hidden;
+    
 }
+
+.flip-card-back .get-answer-button {
+    display: block; /* Show the button on the back side */
+}
+
