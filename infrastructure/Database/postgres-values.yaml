@@ -1,0 +1,6 @@
+  postgresql:
+    auth:
+      postgresPassword: "password"
+      username: "postgresdb"
+      password: "password"
+      database: "surfdb"

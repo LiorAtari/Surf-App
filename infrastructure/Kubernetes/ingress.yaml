@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cicd-ingress
+  namespace: cicd  
+spec:
+  rules:
+    - host: aks-final-project-westeurope-dns-0q0dj3i7.hcp.westeurope.azmk8s.io (needs to have a public ip to work)
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: jenkins
+                port:
+                  number: 8080  
+   
