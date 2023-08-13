@@ -34,6 +34,28 @@ def create_app():
         advanced_level = get_advanced_level()
         return render_template('index.html', beginners_level=beginners_level, intermediates_level=intermediates_level, advanced_level=advanced_level, all_levels=all_levels)
 
+    @app.route('/get_answer', methods=['POST'])
+    def get_answer():
+        try:
+            location = request.form['location']
+
+            # You can customize the prompt based on the selected location
+            prompt = f"Tell me about surfing in {location}."
+
+            # Generate a response from GPT-3.5-turbo using the standard completions approach
+            response = openai.Completion.create(
+                engine="text-davinci-003",  # Use the text-davinci-003 engine
+                prompt=prompt,
+                max_tokens=500
+            )
+
+            generated_reply = response.choices[0].text.strip()
+
+            return render_template('answer.html', generated_reply=generated_reply)
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+
     return app
 
 app = create_app()
