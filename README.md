@@ -2,7 +2,7 @@
 
 ## Infrastructure 
 
-- INF-01 - Kubernetes cluster establishment [link](https://gitlab.com/yovelchen/final_project/-/tree/main/infrastructure/Kubernetes)
+- INF-01 - Kubernetes cluster establishment [link](https://github.com/LiorAtari/Surf-App/tree/main/infrastructure/Kubernetes)
 - INF-02 - Jenkins server establishment
 - INF-04 - ArgoCD solution establishment
 - INF-05 - Prometheus and Grafana solutions establishment
@@ -26,7 +26,7 @@
 
 ## Bonuses
 
-- BON-01 - Integration of  generative-AI tool through an API. [link](https://gitlab.com/yovelchen/final_project/-/blob/main/AI-API.md)
+- BON-01 - Integration of  generative-AI tool through an API. [link](https://github.com/LiorAtari/Surf-App/blob/main/AI_API.md)
 - BON-02 - Implement a cluster-portal, which is a web-entry with links to all the CI/CD and monitoring services. 
 
 
@@ -40,7 +40,7 @@ git clone https://github.com/LiorAtari/Surf-App.git
 build the docker file using the following command:
 ```
 cd application
-docker build -t lioratari/surf-booking:<version> .
+docker build -t <your-docker-repo-name>:<version> .
 ```
 
 To run the unit-tests, use:
@@ -55,16 +55,16 @@ helm package surf-booking-chart
 
 ```
 docker login
-docker push lioratari/surf-booking:<version>
+docker push <your-docker-repo-name>:<version>
 helm push surf-booking-chart.tgz
 ```
-To deploy the application manually, run:
+To deploy the application manually, run (replace <> in URL with your repository name):
 ```
-helm install surf-app oci://registry-1.docker.io/lioratari/surf-booking-chart --version <desired version> --set postgresql.host=<DB IP> --set postgresql.database=<DB name> --set postgresql.password=<DB password> --set image.tag=<version>
+helm install surf-app oci://registry-1.docker.io/<your-repo>/surf-booking-chart --version <desired version> --set postgresql.host=<DB IP> --set postgresql.database=<DB name> --set postgresql.password=<DB password> --set image.tag=<version>
 ```
-Alternativly, you can create a custom values.yaml file as shows below and run:  
+Alternativly, you can create a custom values.yaml file as shows below and run (replace <> in URL with your repository name):  
 ```
-surf-app oci://registry-1.docker.io/lioratari/surf-booking-chart --version <desired version> -f values.yaml
+surf-app oci://registry-1.docker.io/<your-repo>/surf-booking-chart --version <desired version> -f values.yaml
 ```
 values.yaml
 ```
