@@ -1,18 +1,18 @@
 # PostgreSQL installation guide using Helm
 ### NOTE:
-if you attempted to install Postgresql before, you will need to delete the pvc  
+if you attempted to install Postgresql before, you will need to delete the PVC  
 which was created with Postgres before re-installing. To do so, use the following command:
 ```
 kubectl delete pvc --namespace [namespace] [pvc_name]
 ```
 
-To install Postgresql using helm, run the following commands:
+To install Postgresql using Helm, run the following commands:
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 helm repo update
 
-helm install my-postgresql bitnami/postgresql --version 12.7.1
+helm install postgresql bitnami/postgresql --version 12.7.1
 ```
 To get the "postgres" user's password, run the following command (Change the values in [] brackets to match your environment):
 ```
@@ -34,7 +34,7 @@ psql
     ```
 For example -  
 
-the [postgres-values.yaml](https://gitlab.com/sela-1090/students/lioratari/infrastructure_sg/database/-/blob/main/postgres-values.yaml?ref_type=heads) file can be used to deploy PostgreSQL the following values automatically:  
+the [postgres-values.yaml](https://github.com/LiorAtari/Surf-App/blob/main/infrastructure/Database/postgres-values.yaml) file can be used to deploy PostgreSQL the following values automatically:  
 - Admin user's password set to "password"  
 - A database called "surfdb"  
 - Create a user called "postgresdb" with a password of "password"  
