@@ -11,7 +11,7 @@
 
 ## Application 
 
-- APP-01 - The application written in Python3
+- APP-01 - The application is written in Python3
 - APP-02 - Docker-application
 - APP-03 - features unit-tests
 - APP-04 - Database usage
@@ -26,7 +26,7 @@
 
 ## Bonuses
 
-- BON-01 - Integration of  generative-AI tool through an API. [link](https://github.com/LiorAtari/Surf-App/blob/main/AI_API.md)
+- BON-01 - Integration of  generative AI tool through an API. [link](https://github.com/LiorAtari/Surf-App/blob/main/AI_API.md)
 - BON-02 - Implement a cluster-portal, which is a web-entry with links to all the CI/CD and monitoring services. 
 
 
@@ -62,7 +62,7 @@ To deploy the application manually, run (replace <> in URL with your repository 
 ```
 helm install surf-app oci://registry-1.docker.io/<your-repo>/surf-booking-chart --version <desired version> --set postgresql.host=<DB IP> --set postgresql.database=<DB name> --set postgresql.password=<DB password> --set image.tag=<version>
 ```
-Alternativly, you can create a custom values.yaml file as shows below and run (replace <> in URL with your repository name):  
+Alternatively, you can create a custom values.yaml file as shown below and run (replace <> in URL with your repository name):  
 ```
 surf-app oci://registry-1.docker.io/<your-repo>/surf-booking-chart --version <desired version> -f values.yaml
 ```
