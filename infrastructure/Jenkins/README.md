@@ -1,26 +1,36 @@
 # Jenkins
 
- setup Jenkins on Kubernetes Cluster with Dynamic Agents / Pods
+ Setup Jenkins on Kubernetes cluster with Dynamic Agents / Pods
 
 ## Prerequisites
 1. Kubernetes cluster
 2. Helm client  
 3. **Make sure your Kubernetes version is 1.24 and up**
 
-### Steps
-1. helm repo add jenkins https://charts.jenkins.io
-2. helm repo update
-3. create [serviceAccount.yaml](https://github.com/LiorAtari/Surf-App/blob/main/infrastructure/Jenkins/serviceAccount.yaml),
-[jenkins-values.yaml](https://github.com/LiorAtari/Surf-App/blob/main/infrastructure/Jenkins/jenkins-values.yaml)
-### Create a service account for Jenkins in the cluster
-4. kubectl apply -f serviceAccount.yaml -n cicd 
-5. helm install jenkins -n cicd -f jenkins-values.yaml jenkins/jenkins  
+### Adding the Jenkins repository to Helm  
+```
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+```
+### Create a service account for Jenkins in the cluster  
+You can use the following [serviceAccount.yaml](https://github.com/LiorAtari/Surf-App/blob/main/infrastructure/Jenkins/serviceAccount.yaml),
+[jenkins-values.yaml](https://github.com/LiorAtari/Surf-App/blob/main/infrastructure/Jenkins/jenkins-values.yaml) files as an example
+```
+kubectl apply -f serviceAccount.yaml -n cicd 
+helm install jenkins -n cicd -f jenkins-values.yaml jenkins/jenkins  
+```
 Get the admin password from the pod by running:  
-6. kubectl exec --namespace cicd -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/additional/chart-admin-password  
-Use the following command to port forward traffic to "localhost:8080":  
-7. kubectl -n cicd port-forward <pod_name> 8080:8080
+```
+kubectl exec --namespace cicd -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/additional/chart-admin-password  
+```
+Use the following command to port-forward traffic to "localhost:8080":  
+```
+kubectl -n cicd port-forward <pod_name> 8080:8080
+```
 ### Create a token for Jenkins to access the cluster
-6. kubectl create token jenkins -n cicd
+```
+kubectl create token jenkins -n cicd
+```
 ### Install Jenkins plugins using the "jenkins-values.yaml" file:
 
 To install a set of plugins when Jenkins is deployed, 
@@ -34,7 +44,7 @@ If you want to install the Kubernetes plugin when Jenkins deploys, your file wou
 installPlugins:
     - kubernetes:3937.vd7b_82db_e347b_
 ```
-3. Create a pipeline within Jenkins and build it on Kubernetes (Use this code as an [example](https://gitlab.com/sela-1090/students/lioratari/infrastructure_sg/jenkins/-/blob/90e3185c793ffe65b73d7b33182ad9c2fc51e8a2/Use%20Kubernetes%20Pods%20As%20Jenkins%20Agents/pipelineExemple))
+3. Create a pipeline within Jenkins and build it on Kubernetes (Use this code as an [example](https://github.com/LiorAtari/Surf-App/blob/main/infrastructure/Jenkins/pipelineExemple))
 4. Open Powershell and run:  
 ```
 kubectl get pods -n cicd --watch
@@ -47,7 +57,7 @@ Get your avatar logo in GitLab and upload it into the Jenkins repo
 after you uploaded, right-click on the image and select "copy image address"  
 Install Simple Theme Plugin in Jenkins  
 Go to Manage Jenkins → Configure System → Theme → Extra CSS  
-paste this code and change the URL to the one you uploaded to GitLab (Replace <> below with URL to your logo)  
+paste this code and change the URL to the one you uploaded to GitLab (Replace <> below with the URL to your logo)  
 ```
 /* Custom Jenkins Logo /
 .logo {
